@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QTableWidgetItem>
 #include <QDebug>
+#include <QHeaderView>
 
 QString defaultFilename = "C:/Users/user/Desktop/1117/file.txt";
 
@@ -44,6 +45,18 @@ myWidget::myWidget(QWidget *parent)
 
     ui->tableWidget->setColumnCount(4);
     ui->tableWidget->setHorizontalHeaderLabels(headers);
+    
+    // 設置表格外觀
+    ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->verticalHeader()->setVisible(false);
+    ui->tableWidget->setAlternatingRowColors(true);
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    
+    // 設置最小列高
+    ui->tableWidget->verticalHeader()->setDefaultSectionSize(35);
 }
 
 myWidget::~myWidget() {
